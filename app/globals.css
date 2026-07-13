@@ -1,26 +1,132 @@
 @import "tailwindcss";
 
+/* ─── Jupyter Dark Theme (default) ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --nb-bg: #1e1e2e;
+  --nb-cell-bg: #181825;
+  --nb-output-bg: #1e1e2e;
+  --nb-selected-bg: #252535;
+  --nb-border: #313244;
+  --nb-border-subtle: #24243a;
+  --nb-gutter: #585b70;
+  --nb-toolbar: #11111b;
+  --nb-menu: #181825;
+  --nb-sidebar: #13131f;
+  --nb-text: #cdd6f4;
+  --nb-muted: #6c7086;
+  --nb-accent: #89b4fa;
+  --nb-green: #a6e3a1;
+  --nb-green-dim: #2a3d2a;
+  --nb-yellow: #f9e2af;
+  --nb-red: #f38ba8;
+  --nb-purple: #cba6f7;
+  --nb-pink: #f5c2e7;
+  --nb-cyan: #89dceb;
+  --nb-run-active: #89b4fa;
+  --nb-run-bg: #1e3a5f;
+  --nb-kernel-busy: #f9e2af;
+  --nb-kernel-idle: #a6e3a1;
+  --nb-cell-running: #45475a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Jupyter Light Theme ─── */
+.light {
+  --nb-bg: #f8f8f8;
+  --nb-cell-bg: #ffffff;
+  --nb-output-bg: #fafafa;
+  --nb-selected-bg: #f0f4ff;
+  --nb-border: #d0d0d0;
+  --nb-border-subtle: #e8e8e8;
+  --nb-gutter: #999999;
+  --nb-toolbar: #f5f5f5;
+  --nb-menu: #ffffff;
+  --nb-sidebar: #f0f0f0;
+  --nb-text: #212121;
+  --nb-muted: #757575;
+  --nb-accent: #1565c0;
+  --nb-green: #1b5e20;
+  --nb-green-dim: #e8f5e9;
+  --nb-yellow: #e65100;
+  --nb-red: #c62828;
+  --nb-purple: #4a148c;
+  --nb-pink: #880e4f;
+  --nb-cyan: #006064;
+  --nb-run-active: #1565c0;
+  --nb-run-bg: #e3f2fd;
+  --nb-kernel-busy: #e65100;
+  --nb-kernel-idle: #1b5e20;
+  --nb-cell-running: #f0f4ff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ─── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--nb-bg);
+  color: var(--nb-text);
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Monospace ─── */
+.font-mono, code, pre {
+  font-family: ui-monospace, 'Geist Mono', 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+}
+
+/* ─── Scrollbars (Jupyter-style) ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--nb-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nb-gutter);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--nb-accent);
+  color: var(--nb-toolbar);
+  opacity: 0.4;
+}
+
+/* ─── Focus ─── */
+*:focus-visible {
+  outline: 2px solid var(--nb-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ─── Code syntax coloring ─── */
+.token-keyword { color: var(--nb-purple); }
+.token-string  { color: var(--nb-green); }
+.token-number  { color: var(--nb-yellow); }
+.token-comment { color: var(--nb-muted); font-style: italic; }
+.token-class   { color: var(--nb-cyan); }
+.token-func    { color: var(--nb-accent); }
+.token-param   { color: var(--nb-text); }
+.token-op      { color: var(--nb-red); }
+.token-decorator { color: var(--nb-pink); }
+.token-magic   { color: var(--nb-pink); font-style: italic; }
+.token-bash-cmd { color: var(--nb-green); }
+.token-bash-str { color: var(--nb-yellow); }
+.token-bash-eq  { color: var(--nb-muted); }
+
+/* ─── Transitions ─── */
+.theme-transition {
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
