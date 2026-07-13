@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { MenuBar } from './MenuBar'
 import { NotebookToolbar } from './NotebookToolbar'
 import { FileBrowser } from './FileBrowser'
@@ -9,9 +9,12 @@ import { ExperienceOutput } from './outputs/ExperienceOutput'
 import { PublicationOutput } from './outputs/PublicationOutput'
 import { ProjectsOutput } from './outputs/ProjectsOutput'
 import { ContactOutput } from './outputs/ContactOutput'
+import { LearningOutput } from './outputs/LearningOutput'
+import { NotebookTabs } from './NotebookTabs'
 import type { CellState } from '@/lib/types'
 
-const CELL_CODE = [
+// ─── Portfolio Notebook ───
+const PORTFOLIO_CELLS = [
   `from vaibhav import MLEngineer
 
 vaibhav = MLEngineer(
@@ -34,7 +37,7 @@ echo "=== Contact Vaibhav ==="
 cat contact.txt`,
 ]
 
-const CELL_OUTPUTS = [
+const PORTFOLIO_OUTPUTS = [
   <ProfileOutput key="profile" />,
   <ExperienceOutput key="experience" />,
   <PublicationOutput key="publication" />,
@@ -42,14 +45,63 @@ const CELL_OUTPUTS = [
   <ContactOutput key="contact" />,
 ]
 
-const CELL_TYPES: Array<'code' | 'bash'> = ['code', 'code', 'code', 'code', 'bash']
+const PORTFOLIO_TYPES: Array<'code' | 'bash'> = ['code', 'code', 'code', 'code', 'bash']
 
-const EXECUTION_DELAY = 400  // ms per cell "thinking" time
-const STAGGER_DELAY  = 350  // ms between cells starting
+// ─── Learning Journal Notebook ───
+const LEARNING_CELLS = [
+  `# Learning Journal
+
+# Papers & Techniques I'm Exploring
+
+papers = ["MedSAM3 for Medical Segmentation", "Hybrid RAG (BM25 + Dense)", "Edge ML Quantization"]
+papers`,
+
+  `%%bash
+echo "=== Current Reading ==="
+echo "1. MedSAM3 Paper (Meta AI, 2024)"
+echo "2. Hybrid RAG Survey (2024)"
+echo "3. Edge ML Quantization Guide (DoD)"`,
+
+  `# Challenges & Experiments
+challenges = {"MedSAM": "Prompt engineering for CT vs MRI", "RAG": "Re-ranking BM25 + dense scores", "Edge": "INT8 quantization on ARM Cortex-A53"}
+challenges`,
+]
+
+const LEARNING_OUTPUTS = [
+  <div className="font-mono text-[12px]" style={{ color: 'var(--nb-text)' }}>
+    <div className="mb-2">In [1]:</div>
+    <div className="ml-2">
+      <div className="mb-1"><span className="text-[var(--nb-green)]">["MedSAM3 for Medical Segmentation",</span> <span className="text-[var(--nb-purple)]">"Hybrid RAG (BM25 + Dense)",</span> <span className="text-[var(--nb-accent)]">"Edge ML Quantization Guide (DoD)"]</span></div>
+    </div>
+  </div>,
+  <div className="font-mono text-[12px] space-y-0.5" style={{ color: 'var(--nb-green)' }}>
+    <div>In [2]:</div>
+    <div className="ml-2 space-y-0.5">
+      <div>1. MedSAM3 Paper (Meta AI, 2024)</div>
+      <div>2. Hybrid RAG Survey (2024)</div>
+      <div>3. Edge ML Quantization Guide (DoD)</div>
+    </div>
+  </div>,
+  <LearningOutput key="learning" />,
+]
+
+const LEARNING_TYPES: Array<'code' | 'bash'> = ['code', 'bash', 'code']
+
+// ─── Config ───
+const EXECUTION_DELAY = 400
+const STAGGER_DELAY = 350
 
 export function JupyterShell() {
-  const [states, setStates] = useState<CellState[]>(CELL_CODE.map(() => 'idle'))
+  const [activeTab, setActiveTab] = useState<'portfolio' | 'learning'>('portfolio')
+  const [states, setStates] = useState<CellState[]>([])
   const [running, setRunning] = useState(false)
+
+  // Memoize the current notebook's content
+  const currentCells = useMemo(() => activeTab === 'portfolio' ? PORTFOLIO_CELLS : LEARNING_CELLS, [activeTab])
+  const currentOutputs = useMemo(() => activeTab === 'portfolio' ? PORTFOLIO_OUTPUTS : LEARNING_OUTPUTS, [activeTab])
+  const currentTypes = useMemo(() => activeTab === 'portfolio' ? PORTFOLIO_TYPES : LEARNING_TYPES, [activeTab])
+  const notebookName = activeTab === 'portfolio' ? 'vaibhav_dandala.ipynb' : 'learning.ipynb'
+  const cellCount = currentCells.length
 
   const runCell = useCallback((i: number) => {
     setStates((prev) => {
@@ -68,11 +120,11 @@ export function JupyterShell() {
 
   const runAll = useCallback(async () => {
     if (running) return
-    // Reset all
-    setStates(CELL_CODE.map(() => 'idle'))
+    // Reset states for new notebook
+    setStates(currentCells.map(() => 'idle'))
     setRunning(true)
 
-    for (let i = 0; i < CELL_CODE.length; i++) {
+    for (let i = 0; i < currentCells.length; i++) {
       await delay(i === 0 ? 300 : STAGGER_DELAY)
       setStates((prev) => {
         const next = [...prev]
@@ -88,14 +140,18 @@ export function JupyterShell() {
     }
 
     setRunning(false)
-  }, [running])
+  }, [running, currentCells.length])
 
-  // Auto-run on mount
+  // Initialize states when tab changes
+  useEffect(() => {
+    setStates(currentCells.map(() => 'idle'))
+  }, [currentCells])
+
+  // Auto-run on tab mount
   useEffect(() => {
     const t = setTimeout(() => runAll(), 800)
     return () => clearTimeout(t)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [runAll])
 
   const kernelBusy = running || states.some((s) => s === 'running')
 
@@ -104,12 +160,14 @@ export function JupyterShell() {
       className="flex flex-col h-dvh"
       style={{ background: 'var(--nb-bg)' }}
     >
-      <MenuBar kernelBusy={kernelBusy} />
-      <NotebookToolbar onRunAll={runAll} running={running} />
+      {/* Tabs in menu bar */}
+      <MenuBar kernelBusy={kernelBusy} activeTab={activeTab} onTabChange={setActiveTab} />
+
+      <NotebookToolbar onRunAll={runAll} running={running} activeTab={activeTab} onTabChange={setActiveTab} />
 
       {/* Body: sidebar + notebook */}
       <div className="flex flex-1 min-h-0 overflow-hidden">
-        <FileBrowser />
+        <FileBrowser activeTab={activeTab} />
 
         {/* Notebook scroll area */}
         <div className="flex-1 overflow-y-auto">
@@ -118,29 +176,29 @@ export function JupyterShell() {
             className="px-3 sm:px-6 pt-4 pb-2 text-[12px] sm:text-[13px] flex items-center gap-2 flex-wrap"
             style={{ color: 'var(--nb-muted)' }}
           >
-            <span className="font-mono">vaibhav_dandala.ipynb</span>
+            <span className="font-mono">{notebookName}</span>
             <span className="hidden sm:inline">—</span>
             <span className="hidden sm:inline">Last checkpoint: just now</span>
           </div>
 
           {/* Cells */}
           <div className="pb-20 sm:pb-16">
-            {CELL_CODE.map((code, i) => (
+            {states.length > 0 && currentCells.map((code, i) => (
               <div key={i} className="border-b" style={{ borderColor: 'var(--nb-border-subtle)' }}>
                 <NotebookCell
                   index={i + 1}
                   state={states[i]}
                   code={code}
-                  type={CELL_TYPES[i]}
+                  type={currentTypes[i]}
                   onRun={() => runCell(i)}
-                  output={CELL_OUTPUTS[i]}
+                  output={currentOutputs[i]}
                 />
               </div>
             ))}
 
-            {/* Trailing empty space / add cell hint */}
-            <div className="px-6 pt-4 text-[11px] text-[var(--nb-muted)] select-none">
-              Click [Run All] in the toolbar to replay the notebook.
+            {/* Cell count hint */}
+            <div className="px-3 sm:px-6 pt-4 text-[11px] text-[var(--nb-muted)] select-none">
+              {cellCount} cells in {activeTab === 'portfolio' ? 'Portfolio' : 'Learning Journal'}
             </div>
           </div>
         </div>
@@ -155,9 +213,9 @@ export function JupyterShell() {
           color: 'var(--nb-muted)',
         }}
       >
-        <span>vaibhav_dandala.ipynb</span>
-        <div className="flex items-center gap-4">
-          <span>{CELL_CODE.length} cells</span>
+        <span className="font-mono">{notebookName}</span>
+        <div className="flex items-center gap-3 sm:gap-4">
+          <span>{cellCount} cells</span>
           <span className="hidden sm:inline">Python 3.11.9</span>
           <span className="hidden sm:inline">UTF-8</span>
           <span

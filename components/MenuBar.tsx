@@ -1,36 +1,29 @@
 'use client'
 import { KernelIndicator } from './KernelIndicator'
 import { ThemeToggle } from './ThemeToggle'
-
-const menuItems = ['File', 'Edit', 'View', 'Run', 'Kernel', 'Help']
+import { NotebookTabs } from './NotebookTabs'
 
 interface MenuBarProps {
   kernelBusy: boolean
+  activeTab: 'portfolio' | 'learning'
+  onTabChange: (tab: 'portfolio' | 'learning') => void
 }
 
-export function MenuBar({ kernelBusy }: MenuBarProps) {
+export function MenuBar({ kernelBusy, activeTab, onTabChange }: MenuBarProps) {
   return (
     <div
-      className="flex items-center h-9 px-3 gap-1 border-b select-none shrink-0"
+      className="flex items-center h-9 px-3 gap-2 border-b select-none shrink-0"
       style={{
         background: 'var(--nb-menu)',
         borderColor: 'var(--nb-border)',
       }}
     >
-      {/* Logo */}
-      <div className="flex items-center gap-1.5 mr-3">
-        <div className="w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold"
-          style={{ background: 'var(--nb-accent)', color: 'var(--nb-toolbar)' }}>
-          J
-        </div>
-        <span className="hidden sm:inline text-[12px] font-medium text-[var(--nb-text)]">
-          JupyterLab
-        </span>
-      </div>
+      {/* Tabs - primary navigation */}
+      <NotebookTabs activeTab={activeTab} onTabChange={onTabChange} />
 
       {/* Menu items — hidden on mobile */}
       <div className="hidden md:flex items-center gap-0.5">
-        {menuItems.map((item) => (
+        {['File', 'Edit', 'View', 'Run', 'Kernel', 'Help'].map((item) => (
           <button
             key={item}
             className="px-2 py-1 text-[12px] text-[var(--nb-muted)] hover:text-[var(--nb-text)] hover:bg-[var(--nb-border)] rounded transition-colors"

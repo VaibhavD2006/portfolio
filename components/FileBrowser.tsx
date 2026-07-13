@@ -1,46 +1,58 @@
 'use client'
-import { FileCode, ChevronRight, Folder } from 'lucide-react'
+import { FileText, BookOpen, ChevronRight } from 'lucide-react'
 
-export function FileBrowser() {
+interface FileBrowserProps {
+  activeTab: 'portfolio' | 'learning'
+}
+
+export function FileBrowser({ activeTab }: FileBrowserProps) {
+  const files = [
+    {
+      name: activeTab === 'portfolio' ? 'vaibhav_dandala.ipynb' : 'learning.ipynb',
+      type: 'notebook' as const,
+      icon: FileText,
+      active: activeTab === 'portfolio',
+    },
+    {
+      name: activeTab === 'learning' ? 'vaibhav_dandala.ipynb' : 'learning.ipynb',
+      type: 'notebook' as const,
+      icon: activeTab === 'portfolio' ? FileText : BookOpen,
+      active: activeTab === 'learning',
+    },
+  ]
+
   return (
     <div
-      className="hidden md:flex flex-col w-48 shrink-0 border-r text-[12px] select-none"
+      className="hidden md:flex flex-col w-48 shrink-0"
       style={{
         background: 'var(--nb-sidebar)',
-        borderColor: 'var(--nb-border)',
+        borderRight: '1px solid var(--nb-border)',
       }}
     >
       {/* Header */}
       <div
-        className="flex items-center gap-1 px-3 py-2 font-medium text-[11px] uppercase tracking-wider border-b"
-        style={{ color: 'var(--nb-muted)', borderColor: 'var(--nb-border)' }}
+        className="flex items-center gap-1.5 px-3 py-2 text-[11px] font-medium text-[var(--nb-muted)] uppercase tracking-wider border-b"
+        style={{ borderColor: 'var(--nb-border)' }}
       >
-        File Browser
+        Files
       </div>
 
       {/* Tree */}
       <div className="px-2 py-2 space-y-0.5">
-        <div className="flex items-center gap-1 px-1 py-0.5 text-[var(--nb-muted)]">
-          <ChevronRight size={11} />
-          <Folder size={12} />
-          <span>/home/vaibhav</span>
-        </div>
-
-        <div
-          className="flex items-center gap-1.5 px-2 py-1 rounded cursor-pointer"
-          style={{ background: 'var(--nb-selected-bg)', color: 'var(--nb-accent)' }}
-        >
-          <FileCode size={12} />
-          <span className="truncate">vaibhav_dandala.ipynb</span>
-        </div>
-      </div>
-
-      {/* Status bar */}
-      <div
-        className="mt-auto px-3 py-1.5 border-t text-[10px]"
-        style={{ color: 'var(--nb-muted)', borderColor: 'var(--nb-border)' }}
-      >
-        1 item selected
+        {files.map((file) => (
+          <div
+            key={file.name}
+            className="flex items-center gap-1.5 px-1.5 py-0.5 rounded cursor-pointer transition-colors"
+            style={{
+              background: file.active ? 'var(--nb-selected-bg)' : 'transparent',
+              color: file.active ? 'var(--nb-accent)' : 'var(--nb-muted)',
+            }}
+          >
+            <ChevronRight size={10} />
+            <file.icon size={12} />
+            <span className="text-[12px] truncate">{file.name}</span>
+          </div>
+        ))}
       </div>
     </div>
   )

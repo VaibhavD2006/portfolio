@@ -3,16 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Providers } from './providers'
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
-
+// JupyterLab-style fonts: SF Pro for UI, JetBrains Mono for code, SF Mono for terminal
 export const metadata: Metadata = {
   title: 'Vaibhav R. Dandala',
   description: 'ML Engineer · AI Researcher · NCSU · Building agentic LLM pipelines, edge ML systems, and production AI tools.',
@@ -23,9 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className="h-full"
     >
-      <body>
+      <body className="h-full">
         <Providers>{children}</Providers>
       </body>
     </html>

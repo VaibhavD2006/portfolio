@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
-/* ─── Jupyter Dark Theme (default) ─── */
+/* ─── JupyterLab Exact Fonts ─── */
+/* Code fonts: JetBrains Mono (primary), SF Mono (fallback) */
+/* UI fonts: SF Pro Text/Symbol (macOS), Inter (cross-platform) */
+/* Terminal output: SF Mono, Monaco, Consolas */
+
 :root {
   --nb-bg: #1e1e2e;
   --nb-cell-bg: #181825;
@@ -29,7 +33,7 @@
   --nb-cell-running: #45475a;
 }
 
-/* ─── Jupyter Light Theme ─── */
+/* Light theme */
 .light {
   --nb-bg: #f8f8f8;
   --nb-cell-bg: #ffffff;
@@ -51,11 +55,39 @@
   --nb-purple: #4a148c;
   --nb-pink: #880e4f;
   --nb-cyan: #006064;
-  --nb-run-active: #1565c0;
-  --nb-run-bg: #e3f2fd;
-  --nb-kernel-busy: #e65100;
-  --nb-kernel-idle: #1b5e20;
-  --nb-cell-running: #f0f4ff;
+}
+
+/* ─── JupyterLab Font Stack ─── */
+/* JetBrains Mono - JetBrains' official monospace font, used in modern JupyterLab */
+/* SF Mono - Apple's system monospace (Safari, terminal) */
+/* Cascadia Code - Microsoft's terminal font */
+/* Fira Code - Popular coding font with ligatures */
+/* Source Code Pro - Adobe's coding font */
+
+/* Base font stack matches JupyterLab exactly */
+html, body {
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+               'SF Pro Text', 'SF Pro Display', 'SF Pro',
+               system-ui, 'Inter', 'Helvetica Neue',
+               'Helvetica Neue', Arial, 'Noto Sans',
+               'Liberation Sans', sans-serif,
+               'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji';
+}
+
+/* Code/Monospace - JetBrains Mono primary (JupyterLab's current default) */
+.font-mono, code, pre {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata',
+                'Cascadia Code', 'Consolas', 'Source Code Pro',
+                'Roboto Mono', 'Ubuntu Mono', monospace;
+  font-weight: 400;
+}
+
+/* JupyterLab menu bar font */
+nb-menu-bar, .menu-bar {
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+               'SF Pro Text', 'SF Pro Display', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
 }
 
 /* ─── Base ─── */
@@ -70,15 +102,11 @@ html {
 body {
   background: var(--nb-bg);
   color: var(--nb-text);
-  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-size: 14px;
   line-height: 1.6;
   overflow-x: hidden;
-}
-
-/* ─── Monospace ─── */
-.font-mono, code, pre {
-  font-family: ui-monospace, 'Geist Mono', 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ─── Scrollbars (Jupyter-style) ─── */
@@ -111,7 +139,7 @@ body {
   border-radius: 2px;
 }
 
-/* ─── Code syntax coloring ─── */
+/* ─── Code syntax coloring (JupyterLab theme) ─── */
 .token-keyword { color: var(--nb-purple); }
 .token-string  { color: var(--nb-green); }
 .token-number  { color: var(--nb-yellow); }
@@ -124,9 +152,3 @@ body {
 .token-magic   { color: var(--nb-pink); font-style: italic; }
 .token-bash-cmd { color: var(--nb-green); }
 .token-bash-str { color: var(--nb-yellow); }
-.token-bash-eq  { color: var(--nb-muted); }
-
-/* ─── Transitions ─── */
-.theme-transition {
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}

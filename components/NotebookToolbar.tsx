@@ -1,12 +1,14 @@
 'use client'
-import { Play, Square, Plus, Scissors, Copy, ChevronDown, RotateCcw } from 'lucide-react'
+import { Play, Square, Plus, Scissors, Copy, ChevronDown, RotateCcw, FileText, BookOpen } from 'lucide-react'
 
 interface NotebookToolbarProps {
   onRunAll: () => void
   running: boolean
+  activeTab: 'portfolio' | 'learning'
+  onTabChange: (tab: 'portfolio' | 'learning') => void
 }
 
-export function NotebookToolbar({ onRunAll, running }: NotebookToolbarProps) {
+export function NotebookToolbar({ onRunAll, running, activeTab, onTabChange }: NotebookToolbarProps) {
   return (
     <div
       className="flex items-center h-10 px-2 gap-1 border-b shrink-0"
@@ -15,7 +17,7 @@ export function NotebookToolbar({ onRunAll, running }: NotebookToolbarProps) {
         borderColor: 'var(--nb-border)',
       }}
     >
-      {/* Decorative icon buttons — desktop only */}
+      {/* Icon buttons group 1 - desktop */}
       <div className="hidden sm:flex items-center gap-1">
         <ToolbarIcon title="Save" onClick={() => {}}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -40,7 +42,35 @@ export function NotebookToolbar({ onRunAll, running }: NotebookToolbarProps) {
         <div className="w-px h-5 mx-1" style={{ background: 'var(--nb-border)' }} />
       </div>
 
-      {/* Run All — always visible, this is the main CTA */}
+      {/* Tab buttons - always visible */}
+      <div className="hidden sm:flex items-center gap-0.5">
+        <button
+          onClick={() => onTabChange('portfolio')}
+          className="flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-medium transition-colors"
+          style={{
+            background: activeTab === 'portfolio' ? 'var(--nb-accent)' : 'transparent',
+            color: activeTab === 'portfolio' ? 'var(--nb-toolbar)' : 'var(--nb-muted)',
+            border: '1px solid var(--nb-border)',
+          }}
+        >
+          <FileText size={11} />
+          <span>vaibhav.ipynb</span>
+        </button>
+        <button
+          onClick={() => onTabChange('learning')}
+          className="flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-medium transition-colors"
+          style={{
+            background: activeTab === 'learning' ? 'var(--nb-accent)' : 'transparent',
+            color: activeTab === 'learning' ? 'var(--nb-toolbar)' : 'var(--nb-muted)',
+            border: '1px solid var(--nb-border)',
+          }}
+        >
+          <BookOpen size={11} />
+          <span>learning.ipynb</span>
+        </button>
+      </div>
+
+      {/* Run All button */}
       <button
         onClick={onRunAll}
         disabled={running}
@@ -65,11 +95,11 @@ export function NotebookToolbar({ onRunAll, running }: NotebookToolbarProps) {
         )}
       </button>
 
-      <ToolbarIcon title="Restart & run all" onClick={onRunAll}>
+      <ToolbarIcon title="Restart kernel and run all" onClick={onRunAll}>
         <RotateCcw size={13} />
       </ToolbarIcon>
 
-      {/* Cell type dropdown — desktop only */}
+      {/* Cell type dropdown */}
       <div className="hidden sm:flex items-center gap-1 ml-1">
         <div className="w-px h-5 mx-1" style={{ background: 'var(--nb-border)' }} />
         <button
