@@ -9,8 +9,8 @@ interface Tab {
 }
 
 const tabs: Tab[] = [
-  { id: 'portfolio', label: 'vaibhav.ipynb', icon: FileText },
-  { id: 'learning', label: 'learning.ipynb', icon: BookOpen },
+  { id: 'portfolio', label: 'VaibhavLabs', icon: FileText },
+  { id: 'learning', label: 'Learning', icon: BookOpen },
 ]
 
 interface NotebookTabsProps {

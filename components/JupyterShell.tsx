@@ -95,12 +95,13 @@ export function JupyterShell() {
   const [activeTab, setActiveTab] = useState<'portfolio' | 'learning'>('portfolio')
   const [states, setStates] = useState<CellState[]>([])
   const [running, setRunning] = useState(false)
+  const [hasRun, setHasRun] = useState<{ portfolio: boolean; learning: boolean }>({ portfolio: false, learning: false })
 
   // Memoize the current notebook's content
   const currentCells = useMemo(() => activeTab === 'portfolio' ? PORTFOLIO_CELLS : LEARNING_CELLS, [activeTab])
   const currentOutputs = useMemo(() => activeTab === 'portfolio' ? PORTFOLIO_OUTPUTS : LEARNING_OUTPUTS, [activeTab])
   const currentTypes = useMemo(() => activeTab === 'portfolio' ? PORTFOLIO_TYPES : LEARNING_TYPES, [activeTab])
-  const notebookName = activeTab === 'portfolio' ? 'vaibhav_dandala.ipynb' : 'learning.ipynb'
+  const notebookName = activeTab === 'portfolio' ? 'VaibhavLabs.ipynb' : 'learning.ipynb'
   const cellCount = currentCells.length
 
   const runCell = useCallback((i: number) => {
@@ -147,11 +148,16 @@ export function JupyterShell() {
     setStates(currentCells.map(() => 'idle'))
   }, [currentCells])
 
-  // Auto-run on tab mount
+  // Auto-run on tab mount (only once per tab)
   useEffect(() => {
-    const t = setTimeout(() => runAll(), 800)
-    return () => clearTimeout(t)
-  }, [runAll])
+    if (!hasRun[activeTab]) {
+      const t = setTimeout(() => {
+        runAll()
+        setHasRun((prev) => ({ ...prev, [activeTab]: true }))
+      }, 800)
+      return () => clearTimeout(t)
+    }
+  }, [activeTab, hasRun, runAll])
 
   const kernelBusy = running || states.some((s) => s === 'running')
 

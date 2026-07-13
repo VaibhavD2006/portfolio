@@ -8,15 +8,15 @@ interface FileBrowserProps {
 export function FileBrowser({ activeTab }: FileBrowserProps) {
   const files = [
     {
-      name: activeTab === 'portfolio' ? 'vaibhav_dandala.ipynb' : 'learning.ipynb',
+      name: 'VaibhavLabs.ipynb',
       type: 'notebook' as const,
       icon: FileText,
       active: activeTab === 'portfolio',
     },
     {
-      name: activeTab === 'learning' ? 'vaibhav_dandala.ipynb' : 'learning.ipynb',
+      name: 'learning.ipynb',
       type: 'notebook' as const,
-      icon: activeTab === 'portfolio' ? FileText : BookOpen,
+      icon: BookOpen,
       active: activeTab === 'learning',
     },
   ]

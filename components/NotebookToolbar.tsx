@@ -54,7 +54,7 @@ export function NotebookToolbar({ onRunAll, running, activeTab, onTabChange }: N
           }}
         >
           <FileText size={11} />
-          <span>vaibhav.ipynb</span>
+          <span>VaibhavLabs</span>
         </button>
         <button
           onClick={() => onTabChange('learning')}
@@ -66,7 +66,7 @@ export function NotebookToolbar({ onRunAll, running, activeTab, onTabChange }: N
           }}
         >
           <BookOpen size={11} />
-          <span>learning.ipynb</span>
+          <span>Learning</span>
         </button>
       </div>
 
