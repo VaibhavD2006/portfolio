@@ -10,7 +10,7 @@ export const publications: Publication[] = [
     coAuthorOrg: 'NASA Jet Propulsion Laboratory',
     description:
       'Hybrid RAG workflow over MSL (Mars Science Laboratory) archives using BM25 + dense embeddings. Enables planetary scientists to query decades of Mars rover data through a natural language interface. Achieved 80%+ PDS3 filter prediction accuracy across 10,000+ indexed mission records.',
-    url: '#',
+    url: 'https://ieeexplore.ieee.org/document/11471464',
     tags: ['RAG', 'LLM', 'NASA', 'Multimodal', 'BM25', 'PineconeDB'],
   },
 ]
