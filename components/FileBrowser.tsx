@@ -3,21 +3,22 @@ import { FileText, BookOpen, ChevronRight } from 'lucide-react'
 
 interface FileBrowserProps {
   activeTab: 'portfolio' | 'learning'
+  onTabChange: (tab: 'portfolio' | 'learning') => void
 }
 
-export function FileBrowser({ activeTab }: FileBrowserProps) {
+export function FileBrowser({ activeTab, onTabChange }: FileBrowserProps) {
   const files = [
     {
+      id: 'portfolio' as const,
       name: 'VaibhavLabs.ipynb',
       type: 'notebook' as const,
       icon: FileText,
-      active: activeTab === 'portfolio',
     },
     {
+      id: 'learning' as const,
       name: 'learning.ipynb',
       type: 'notebook' as const,
       icon: BookOpen,
-      active: activeTab === 'learning',
     },
   ]
 
@@ -39,20 +40,25 @@ export function FileBrowser({ activeTab }: FileBrowserProps) {
 
       {/* Tree */}
       <div className="px-2 py-2 space-y-0.5">
-        {files.map((file) => (
-          <div
-            key={file.name}
-            className="flex items-center gap-1.5 px-1.5 py-0.5 rounded cursor-pointer transition-colors"
-            style={{
-              background: file.active ? 'var(--nb-selected-bg)' : 'transparent',
-              color: file.active ? 'var(--nb-accent)' : 'var(--nb-muted)',
-            }}
-          >
-            <ChevronRight size={10} />
-            <file.icon size={12} />
-            <span className="text-[12px] truncate">{file.name}</span>
-          </div>
-        ))}
+        {files.map((file) => {
+          const Icon = file.icon
+          const isActive = activeTab === file.id
+          return (
+            <button
+              key={file.id}
+              onClick={() => onTabChange(file.id)}
+              className="flex items-center gap-1.5 px-1.5 py-0.5 rounded cursor-pointer transition-colors w-full text-left"
+              style={{
+                background: isActive ? 'var(--nb-selected-bg)' : 'transparent',
+                color: isActive ? 'var(--nb-accent)' : 'var(--nb-muted)',
+              }}
+            >
+              <ChevronRight size={10} />
+              <Icon size={12} />
+              <span className="text-[12px] truncate">{file.name}</span>
+            </button>
+          )
+        })}
       </div>
     </div>
   )

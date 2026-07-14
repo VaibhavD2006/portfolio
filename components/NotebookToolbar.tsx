@@ -1,14 +1,12 @@
 'use client'
-import { Play, Square, Plus, Scissors, Copy, ChevronDown, RotateCcw, FileText, BookOpen } from 'lucide-react'
+import { Play, Square, Plus, Scissors, Copy, ChevronDown, RotateCcw } from 'lucide-react'
 
 interface NotebookToolbarProps {
   onRunAll: () => void
   running: boolean
-  activeTab: 'portfolio' | 'learning'
-  onTabChange: (tab: 'portfolio' | 'learning') => void
 }
 
-export function NotebookToolbar({ onRunAll, running, activeTab, onTabChange }: NotebookToolbarProps) {
+export function NotebookToolbar({ onRunAll, running }: NotebookToolbarProps) {
   return (
     <div
       className="flex items-center h-10 px-2 gap-1 border-b shrink-0"
@@ -40,34 +38,6 @@ export function NotebookToolbar({ onRunAll, running, activeTab, onTabChange }: N
         </ToolbarIcon>
 
         <div className="w-px h-5 mx-1" style={{ background: 'var(--nb-border)' }} />
-      </div>
-
-      {/* Tab buttons - always visible */}
-      <div className="hidden sm:flex items-center gap-0.5">
-        <button
-          onClick={() => onTabChange('portfolio')}
-          className="flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-medium transition-colors"
-          style={{
-            background: activeTab === 'portfolio' ? 'var(--nb-accent)' : 'transparent',
-            color: activeTab === 'portfolio' ? 'var(--nb-toolbar)' : 'var(--nb-muted)',
-            border: '1px solid var(--nb-border)',
-          }}
-        >
-          <FileText size={11} />
-          <span>VaibhavLabs</span>
-        </button>
-        <button
-          onClick={() => onTabChange('learning')}
-          className="flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-medium transition-colors"
-          style={{
-            background: activeTab === 'learning' ? 'var(--nb-accent)' : 'transparent',
-            color: activeTab === 'learning' ? 'var(--nb-toolbar)' : 'var(--nb-muted)',
-            border: '1px solid var(--nb-border)',
-          }}
-        >
-          <BookOpen size={11} />
-          <span>Learning</span>
-        </button>
       </div>
 
       {/* Run All button */}

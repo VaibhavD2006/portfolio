@@ -10,7 +10,6 @@ import { PublicationOutput } from './outputs/PublicationOutput'
 import { ProjectsOutput } from './outputs/ProjectsOutput'
 import { ContactOutput } from './outputs/ContactOutput'
 import { LearningOutput } from './outputs/LearningOutput'
-import { NotebookTabs } from './NotebookTabs'
 import type { CellState } from '@/lib/types'
 
 // ─── Portfolio Notebook ───
@@ -166,14 +165,14 @@ export function JupyterShell() {
       className="flex flex-col h-dvh"
       style={{ background: 'var(--nb-bg)' }}
     >
-      {/* Tabs in menu bar */}
+      {/* Menu bar with software name */}
       <MenuBar kernelBusy={kernelBusy} activeTab={activeTab} onTabChange={setActiveTab} />
 
-      <NotebookToolbar onRunAll={runAll} running={running} activeTab={activeTab} onTabChange={setActiveTab} />
+      <NotebookToolbar onRunAll={runAll} running={running} />
 
       {/* Body: sidebar + notebook */}
       <div className="flex flex-1 min-h-0 overflow-hidden">
-        <FileBrowser activeTab={activeTab} />
+        <FileBrowser activeTab={activeTab} onTabChange={setActiveTab} />
 
         {/* Notebook scroll area */}
         <div className="flex-1 overflow-y-auto">

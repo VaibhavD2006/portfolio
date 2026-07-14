@@ -1,7 +1,6 @@
 'use client'
 import { KernelIndicator } from './KernelIndicator'
 import { ThemeToggle } from './ThemeToggle'
-import { NotebookTabs } from './NotebookTabs'
 
 interface MenuBarProps {
   kernelBusy: boolean
@@ -18,8 +17,13 @@ export function MenuBar({ kernelBusy, activeTab, onTabChange }: MenuBarProps) {
         borderColor: 'var(--nb-border)',
       }}
     >
-      {/* Tabs - primary navigation */}
-      <NotebookTabs activeTab={activeTab} onTabChange={onTabChange} />
+      {/* Software name - top left */}
+      <button
+        className="font-bold text-[13px] text-[var(--nb-text)] hover:text-[var(--nb-accent)] transition-colors"
+        style={{ fontFamily: 'var(--font-jetbrains-mono), var(--font-sf-mono), monospace' }}
+      >
+        VaibhavLabs
+      </button>
 
       {/* Menu items — hidden on mobile */}
       <div className="hidden md:flex items-center gap-0.5">
