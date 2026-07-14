@@ -239,7 +239,7 @@ export function JupyterShell() {
       {/* Menu bar with software name */}
       <MenuBar kernelBusy={kernelBusy} activeTab={activeTab} onTabChange={setActiveTab} />
 
-      <NotebookToolbar onRunAll={runAll} running={running} />
+      <NotebookToolbar onRunAll={runAll} running={running} hasRun={hasRun[activeTab]} />
 
       {/* Body: sidebar + notebook */}
       <div className="flex flex-1 min-h-0 overflow-hidden">
