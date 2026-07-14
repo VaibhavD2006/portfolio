@@ -41,7 +41,7 @@ export const projects: ProjectEntry[] = [
     title: 'CaseForge AI',
     org: 'NC State Consulting Clubs',
     category: ['SaaS', 'AI'],
-    status: 'Published',
+    status: 'Currently Building',
     summary:
       'AI-powered consulting case interview prep platform. Provides adaptive mock interviews with 7-dimension scoring and readiness dashboard for candidates targeting MBB/T2 firms like McKinsey, BCG, Bain.',
     stack: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'Google Gemini', 'Ollama', 'PostgreSQL', 'Drizzle ORM', 'Inngest'],
