@@ -55,13 +55,13 @@ const LEARNING_CELLS = [
 papers = [
     "MedSAM3 for Medical Segmentation",
     "Fine-tuning Image Detection Models",
-    "Hybrid RAG (BM25 + Dense)",
-    "VIX Prediction Bot",
-    "Backtesting Systems"
+    "Hybrid RAG (BM25 + Dense)"
 ]
 papers
 
-# Quant Finance Projects
+# Currently Building
+
+## Quant Finance
 quant = [
     "VIX Prediction Bot - $500 P&L (live)",
     "Backtesting infrastructure for SEC filings using web scrapers",
@@ -70,12 +70,38 @@ quant = [
 ]
 quant
 
-# Challenges & Experiments
+## CaseForge AI - AI-powered consulting case interview prep
+caseforge = {
+    "project": "CaseForge AI",
+    "purpose": "AI-powered consulting case interview prep for NC State consulting clubs",
+    "features": [
+        "AI Interviewer - Adaptive mock interviews mirroring real case styles",
+        "7-Dimension Scorecard - Structure, hypothesis quality, numerics, synthesis, communication",
+        "Readiness Dashboard - Progress tracking toward offer-ready",
+        "Drill Library - 100+ case scenarios across industries",
+        "Goals Tracking - Prep milestones",
+        "Session History & Analytics - Full history with charts and trends"
+    ],
+    "tech_stack": {
+        "framework": "Next.js 16 (App Router)",
+        "language": "TypeScript / React 19",
+        "styling": "Tailwind CSS v4 + Shadcn UI",
+        "ai": "Google Gemini + Ollama (local)",
+        "db": "PostgreSQL via Drizzle ORM",
+        "auth": "Auth.js v5 (Google OAuth)",
+        "jobs": "Inngest (7-stage evaluation pipeline)",
+        "charts": "Recharts"
+    }
+}
+caseforge`,
+
+  `# Challenges & Experiments
 challenges = {
     "MedSAM": "Prompt engineering for CT vs MRI vs ultrasound - optimal prompts vary by modality",
     "Detection": "Fine-tuning for oncology/defense domains with limited annotated data",
     "RAG": "Re-ranking BM25 + dense scores on comparable scales",
-    "Quant": "Integrating real-time options flow with RSI for mean reversion signals"
+    "Quant": "Integrating real-time options flow with RSI for mean reversion signals",
+    "CaseForge": "Building async evaluation pipeline with Inngest for 7-dimension scoring"
 }
 challenges`,
 ]
@@ -84,7 +110,7 @@ const LEARNING_OUTPUTS = [
   <div className="font-mono text-[12px]" style={{ color: 'var(--nb-text)' }}>
     <div className="mb-2">In [1]:</div>
     <div className="ml-2">
-      <div className="mb-1"><span className="text-[var(--nb-green)]">["MedSAM3 for Medical Segmentation",</span> <span className="text-[var(--nb-purple)]">"Fine-tuning Image Detection Models",</span> <span className="text-[var(--nb-accent)]">"Hybrid RAG (BM25 + Dense)",</span> <span className="text-[var(--nb-cyan)]">"VIX Prediction Bot",</span> <span className="text-[var(--nb-pink)]">"Backtesting Systems"]</span></div>
+      <div className="mb-1"><span className="text-[var(--nb-green)]">["MedSAM3 for Medical Segmentation",</span> <span className="text-[var(--nb-purple)]">"Fine-tuning Image Detection Models",</span> <span className="text-[var(--nb-accent)]">"Hybrid RAG (BM25 + Dense)"]</span></div>
     </div>
   </div>,
   <div className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-text)' }}>
@@ -93,23 +119,39 @@ const LEARNING_OUTPUTS = [
       <div>• MedSAM3 for Medical Segmentation - foundation model for medical images</div>
       <div>• Fine-tuning Image Detection Models - Oncology + US Defense applications</div>
       <div>• Hybrid RAG (BM25 + Dense) - combining sparse and dense retrieval</div>
-      <div>• VIX Prediction Bot - $500 P&L from live trading</div>
-      <div>• Backtesting Systems - automated strategies for SEC filings</div>
     </div>
   </div>,
-  <div className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-green)' }}>
+  <div className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-text)' }}>
     <div>In [3]:</div>
     <div className="ml-2 space-y-1">
-      <div>• VIX Prediction Bot - $500 P&L (live)"</div>
+      <div className="mb-2">=== Currently Building ===</div>
+      <div className="mb-2">--- Quant Finance ---</div>
+      <div>• VIX Prediction Bot - $500 P&L (live)</div>
       <div>• Backtesting infrastructure for SEC filings using web scrapers</div>
       <div>• Options flow + RSI mean reversion strategies</div>
       <div>• Monte Carlo simulations for risk analysis</div>
+      <div className="mt-2 mb-2">--- CaseForge AI ---</div>
+      <div>• AI-powered consulting case interview prep</div>
+      <div>• 7-Dimension Scorecard (Structure, Hypothesis, Numerics, Synthesis, Communication)</div>
+      <div>• Readiness Dashboard with Bronze → Platinum tier progression</div>
+      <div>• 100+ case scenarios across industries</div>
+      <div className="mt-2">Tech: Next.js 16, TypeScript, Tailwind, Gemini + Ollama, PostgreSQL, Inngest</div>
+    </div>
+  </div>,
+  <div className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-green)' }}>
+    <div>In [5]:</div>
+    <div className="ml-2 space-y-1">
+      <div>• MedSAM: Prompt engineering for CT vs MRI vs ultrasound</div>
+      <div>• Detection: Fine-tuning for oncology/defense domains</div>
+      <div>• RAG: Re-ranking BM25 + dense scores on comparable scales</div>
+      <div>• Quant: Integrating options flow with RSI for mean reversion</div>
+      <div>• CaseForge: Building async 7-stage Inngest evaluation pipeline</div>
     </div>
   </div>,
   <LearningOutput key="learning" />,
 ]
 
-const LEARNING_TYPES: Array<'code' | 'bash'> = ['code', 'code', 'code']
+const LEARNING_TYPES: Array<'code' | 'bash'> = ['code', 'code', 'code', 'code']
 
 // ─── Config ───
 const EXECUTION_DELAY = 400

@@ -57,6 +57,20 @@ export const learningItems: ProjectEntry[] = [
     ],
     hardPart: 'Integrating real-time options flow data with RSI indicators to calculate mean reversion signals across various sectors while maintaining robust backtesting infrastructure.',
   },
+  {
+    title: 'CaseForge AI',
+    org: 'NC State Consulting Clubs',
+    category: ['SaaS', 'AI', 'Product'],
+    status: 'Ongoing',
+    summary:
+      'AI-powered consulting case interview prep platform. Provides adaptive mock interviews with 7-dimension scoring and readiness dashboard for candidates targeting MBB/T2 firms.',
+    stack: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'Google Gemini', 'Ollama', 'PostgreSQL', 'Drizzle ORM', 'Inngest', 'Recharts'],
+    metrics: [
+      { label: 'Features', value: 'AI Interviewer + 7-D Scorecard' },
+      { label: 'Target Users', value: 'NC State Consulting Club' },
+    ],
+    hardPart: 'Building the 7-stage async evaluation pipeline with Inngest for comprehensive case interview scoring across structure, hypothesis, numerics, synthesis, and communication.',
+  },
 ]
 
 export const learningQuestions = [
