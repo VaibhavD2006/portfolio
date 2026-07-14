@@ -7,7 +7,7 @@ const lines = [
   { prefix: '',   text: '=== Contact Vaibhav ===',         type: 'out' },
   { prefix: '$ ', text: 'cat contact.txt',                 type: 'cmd' },
   { prefix: '',   text: '',                                 type: 'blank' },
-  { prefix: '',   text: 'Email    : vrdandala@ncsu.edu',   type: 'out' },
+  { prefix: '',   text: 'Email    : vrdandal@ncsu.edu',   type: 'out' },
   { prefix: '',   text: 'GitHub   : github.com/VaibhavD2006',  type: 'out' },
   { prefix: '',   text: 'LinkedIn : linkedin.com/in/vaibhav-dandala', type: 'out' },
   { prefix: '',   text: 'Phone    : (984) 244-8318',       type: 'out' },

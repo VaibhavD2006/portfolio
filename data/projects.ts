@@ -34,23 +34,24 @@ export const projects: ProjectEntry[] = [
     ],
     hardPart:
       'Building hybrid BM25 + dense retrieval that actually improves over either sparse or dense alone on unstructured PDS3 archive data, which mixes structured metadata with freeform mission notes across decades of records.',
-    url: '#',
-    urlLabel: 'ICMLA \'25',
+    url: 'https://ieeexplore.ieee.org/document/11471464',
+    urlLabel: 'Paper',
   },
   {
-    title: 'UNC Radiation Oncology',
-    org: 'UNC Department of Radiation Oncology',
-    category: ['Vision', 'Research'],
-    status: 'Ongoing',
+    title: 'CaseForge AI',
+    org: 'NC State Consulting Clubs',
+    category: ['SaaS', 'AI'],
+    status: 'Published',
     summary:
-      'CNN pipeline for vertebrae segmentation and lesion detection on clinical CT scans. Combines MedSAM3 for 3D segmentation with YOLOv8 for detection. Trained on 65,000+ CT images across active clinical trials, reducing radiologist data prep time by 35%.',
-    stack: ['PyTorch', 'MedSAM3', 'YOLOv8', 'Python', 'DICOM pipelines', 'NumPy', 'OpenCV'],
+      'AI-powered consulting case interview prep platform. Provides adaptive mock interviews with 7-dimension scoring and readiness dashboard for candidates targeting MBB/T2 firms like McKinsey, BCG, Bain.',
+    stack: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'Google Gemini', 'Ollama', 'PostgreSQL', 'Drizzle ORM', 'Inngest'],
     metrics: [
-      { label: 'Segmentation accuracy', value: '93%' },
-      { label: 'CT images trained on', value: '65,000+' },
-      { label: 'Radiologist prep time reduction', value: '35%' },
+      { label: 'Features', value: 'AI Interviewer + 7-D Scorecard' },
+      { label: 'Target Users', value: 'NC State Consulting Club' },
     ],
     hardPart:
-      'Getting MedSAM3 to generalize across CT scans from different scanners and clinical protocols without re-training from scratch — required careful DICOM normalization and augmentation strategies specific to clinical imaging variability.',
+      'Building the 7-stage async evaluation pipeline with Inngest for comprehensive case interview scoring across structure, hypothesis, numerics, synthesis, and communication.',
+    url: '#',
+    urlLabel: 'See below',
   },
 ]
