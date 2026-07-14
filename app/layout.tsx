@@ -5,8 +5,11 @@ import './globals.css'
 
 // JupyterLab-style fonts: SF Pro for UI, JetBrains Mono for code, SF Mono for terminal
 export const metadata: Metadata = {
-  title: 'Vaibhav R. Dandala',
+  title: 'VaibhavLabs',
   description: 'ML Engineer · AI Researcher · NCSU · Building agentic LLM pipelines, edge ML systems, and production AI tools.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
