@@ -22,12 +22,11 @@ export function ProfileOutput() {
     { label: 'GitHub', href: 'https://github.com/VaibhavD2006', icon: GithubIcon },
     { label: 'LinkedIn', href: 'https://linkedin.com/in/vaibhav-dandala', icon: LinkedinIcon },
     { label: 'Resume', href: '/resume', icon: FileText },
-    { label: 'Email', href: 'mailto:vrdandala@ncsu.edu', icon: Mail },
+    { label: 'Email', href: 'mailto:vrdandal@ncsu.edu', icon: Mail },
   ]
 
   const badges = [
-    { text: 'GPA 3.80' },
-    { text: 'EE + CPE Dual' },
+    { text: 'EE + CPE (Dual Degree)' },
     { text: 'US Citizen' },
     { text: "NCSU '28" },
   ]

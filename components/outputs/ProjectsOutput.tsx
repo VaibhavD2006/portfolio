@@ -9,6 +9,7 @@ const statusColors: Record<string, { bg: string; fg: string }> = {
   Published: { bg: 'var(--nb-run-bg)',    fg: 'var(--nb-accent)' },
   Ongoing:   { bg: 'var(--nb-selected-bg)', fg: 'var(--nb-yellow)' },
   Research:  { bg: 'var(--nb-selected-bg)', fg: 'var(--nb-purple)' },
+  'Currently Building': { bg: 'var(--nb-selected-bg)', fg: 'var(--nb-cyan)' },
 }
 
 export function ProjectsOutput() {

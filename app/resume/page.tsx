@@ -33,7 +33,7 @@ export default function ResumePage() {
             ML Engineer · AI Researcher · Research Engineer
           </p>
           <div className="flex flex-wrap gap-3 mt-3 text-[12px]" style={{ color: 'var(--nb-muted)' }}>
-            <span>vrdandala@ncsu.edu</span>
+            <span>vrdandal@ncsu.edu</span>
             <span>·</span>
             <span>(984) 244-8318</span>
             <span>·</span>
