@@ -126,13 +126,13 @@ const LEARNING_OUTPUTS: React.ReactNode[] = [
     <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Options flow + RSI mean reversion across sectors"</span><span className="text-[var(--nb-muted)]">,</span></div>
     <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Monte Carlo simulations for risk analysis"</span><span className="text-[var(--nb-muted)]">,</span></div>
     <div><span className="text-[var(--nb-muted)]">]</span></div>
-    <div className="mt-2"><span className="text-[var(--nb-green)]">"stack"</span><span className="text-[var(--nb-muted)]">: {"{"}</span></div>
+    <div className="mt-2"><span className="text-[var(--nb-green)]">"stack"</span><span className="text-[var(--nb-muted)]">: {'{'}</span></div>
     <div className="ml-4"><span className="text-[var(--nb-green)]">"runtime"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"Python 3.x"</span></div>
     <div className="ml-4"><span className="text-[var(--nb-green)]">"data"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"DuckDB + Polars + PyArrow + yfinance + EDGAR"</span></div>
     <div className="ml-4"><span className="text-[var(--nb-green)]">"signals_ml"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"scikit-learn + hmmlearn + statsmodels + cvxpy"</span></div>
     <div className="ml-4"><span className="text-[var(--nb-green)]">"serving"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"FastAPI + uvicorn"</span></div>
     <div className="ml-4"><span className="text-[var(--nb-green)]">"tracking"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"MLflow"</span></div>
-    <div><span className="text-[var(--nb-muted)]">{"}"}</span></div>
+    <div><span className="text-[var(--nb-muted)]">{'}'}</span></div>
   </div>,
 
   // caseforge output
@@ -146,12 +146,12 @@ const LEARNING_OUTPUTS: React.ReactNode[] = [
     <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Drill Library — 100+ cases across retail, healthcare, M&A, ops"</span><span className="text-[var(--nb-muted)]">,</span></div>
     <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Session History & Analytics — charts and dimension trends"</span><span className="text-[var(--nb-muted)]">,</span></div>
     <div><span className="text-[var(--nb-muted)]">]</span></div>
-    <div className="mt-2"><span className="text-[var(--nb-green)]">"stack"</span><span className="text-[var(--nb-muted)]">: {"{"}</span></div>
+    <div className="mt-2"><span className="text-[var(--nb-green)]">"stack"</span><span className="text-[var(--nb-muted)]">: {'{'}</span></div>
     <div className="ml-4"><span className="text-[var(--nb-green)]">"framework"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"Next.js 16 + TypeScript + React 19"</span></div>
     <div className="ml-4"><span className="text-[var(--nb-green)]">"ai"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"Google Gemini + Ollama (local inference)"</span></div>
     <div className="ml-4"><span className="text-[var(--nb-green)]">"db"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"PostgreSQL + Drizzle ORM"</span></div>
     <div className="ml-4"><span className="text-[var(--nb-green)]">"jobs"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"Inngest — 7-stage async eval pipeline"</span></div>
-    <div><span className="text-[var(--nb-muted)]">{"}"}</span></div>
+    <div><span className="text-[var(--nb-muted)]">{'}'}</span></div>
   </div>,
 ]
 
