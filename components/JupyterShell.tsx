@@ -21,7 +21,7 @@ vaibhav = MLEngineer(
     university="NC State University",
     degree="B.S. EE + CPE (Dual)",
     gpa=3.80,
-    focus=["Agentic LLM/RAG", "Edge ML", "Computer Vision"],
+    focus=["Agentic LLM/RAG", "Building End-To-End Tools", "Computer Vision"],
 )
 vaibhav.display()`,
 

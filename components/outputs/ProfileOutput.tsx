@@ -32,7 +32,7 @@ export function ProfileOutput() {
     { text: "NCSU '28" },
   ]
 
-  const focus = ['Agentic LLM/RAG Pipelines', 'Edge ML Inference', 'Computer Vision', 'Production AI Systems']
+  const focus = ['Agentic LLM/RAG Pipelines', 'Building End-To-End Tools', 'Computer Vision', 'Production AI Systems']
 
   return (
     <div className="space-y-4">
