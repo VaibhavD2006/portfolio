@@ -64,7 +64,7 @@ papers`,
   `# Quant Finance
 quant = {
     "VIX Prediction Bot": "$500 P&L realized (not paper trade)",
-    "Strategies": [
+    "Other strategies": [
         "Post Earnings Drift Announcement via SEC filing web scrapers",
         "Options flow + RSI mean reversion across sectors",
         "Monte Carlo simulations for risk analysis",
@@ -121,7 +121,7 @@ const LEARNING_OUTPUTS: React.ReactNode[] = [
   // quant output
   <div key="quant-out" className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-text)' }}>
     <div><span className="text-[var(--nb-green)]">"VIX Prediction Bot"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"$500 P&L realized (not paper trade)"</span></div>
-    <div className="mt-2"><span className="text-[var(--nb-green)]">"Strategies"</span><span className="text-[var(--nb-muted)]">: [</span></div>
+    <div className="mt-2"><span className="text-[var(--nb-green)]">"Other strategies"</span><span className="text-[var(--nb-muted)]">: [</span></div>
     <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Post Earnings Drift Announcement via SEC filing web scrapers"</span><span className="text-[var(--nb-muted)]">,</span></div>
     <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Options flow + RSI mean reversion across sectors"</span><span className="text-[var(--nb-muted)]">,</span></div>
     <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Monte Carlo simulations for risk analysis"</span><span className="text-[var(--nb-muted)]">,</span></div>

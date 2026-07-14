@@ -25,7 +25,7 @@ export interface ProjectEntry {
   title: string
   org: string
   category: string[]
-  status: 'Shipped' | 'Published' | 'Ongoing' | 'Research'
+  status: 'Shipped' | 'Published' | 'Ongoing' | 'Research' | 'Currently Building'
   summary: string
   stack: string[]
   metrics: { label: string; value: string }[]
