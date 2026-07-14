@@ -50,7 +50,7 @@ export const learningItems: ProjectEntry[] = [
     status: 'Ongoing',
     summary:
       'Building automated backtesting and Monte Carlo simulation systems. Currently working on a prediction bot that forecasts VIX and uses mean reversion strategies for trading. Recent success: $500 profit realized (not paper trade).',
-    stack: ['Python', 'Backtesting', 'Monte Carlo', 'RSI', 'Options Flow', 'Web Scrapers', 'SEC Filings'],
+    stack: ['Python 3.x', 'DuckDB', 'Polars', 'PyArrow', 'yfinance', 'EDGAR', 'scikit-learn', 'hmmlearn', 'statsmodels', 'cvxpy', 'FastAPI', 'uvicorn', 'MLflow'],
     metrics: [
       { label: 'P&L', value: '$500 realized' },
       { label: 'Strategy', value: 'Mean reversion on VIX' },

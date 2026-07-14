@@ -69,7 +69,13 @@ quant = {
         "Options flow + RSI mean reversion across sectors",
         "Monte Carlo simulations for risk analysis",
     ],
-    "Stack": ["Python", "Backtesting", "Monte Carlo", "RSI", "Options Flow"],
+    "stack": {
+        "runtime":    "Python 3.x",
+        "data":       "DuckDB + Polars + PyArrow + yfinance + EDGAR",
+        "signals_ml": "scikit-learn + hmmlearn + statsmodels + cvxpy",
+        "serving":    "FastAPI + uvicorn",
+        "tracking":   "MLflow",
+    },
 }
 quant`,
 
@@ -120,7 +126,13 @@ const LEARNING_OUTPUTS: React.ReactNode[] = [
     <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Options flow + RSI mean reversion across sectors"</span><span className="text-[var(--nb-muted)]">,</span></div>
     <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Monte Carlo simulations for risk analysis"</span><span className="text-[var(--nb-muted)]">,</span></div>
     <div><span className="text-[var(--nb-muted)]">]</span></div>
-    <div className="mt-2"><span className="text-[var(--nb-green)]">"Stack"</span><span className="text-[var(--nb-muted)]">: [</span><span className="text-[var(--nb-yellow)]">"Python", "Backtesting", "Monte Carlo", "RSI", "Options Flow"</span><span className="text-[var(--nb-muted)]">]</span></div>
+    <div className="mt-2"><span className="text-[var(--nb-green)]">"stack"</span><span className="text-[var(--nb-muted)]">: {"{"}</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-green)]">"runtime"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"Python 3.x"</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-green)]">"data"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"DuckDB + Polars + PyArrow + yfinance + EDGAR"</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-green)]">"signals_ml"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"scikit-learn + hmmlearn + statsmodels + cvxpy"</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-green)]">"serving"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"FastAPI + uvicorn"</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-green)]">"tracking"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"MLflow"</span></div>
+    <div><span className="text-[var(--nb-muted)]">{"}"}</span></div>
   </div>,
 
   // caseforge output
