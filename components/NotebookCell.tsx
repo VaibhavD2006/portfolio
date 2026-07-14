@@ -9,7 +9,7 @@ interface NotebookCellProps {
   index: number
   state: CellState
   code: string
-  type?: 'code' | 'bash'
+  type?: 'code' | 'bash' | 'markdown'
   onRun: () => void
   output: React.ReactNode
 }
@@ -18,6 +18,32 @@ export function NotebookCell({ index, state, code, type = 'code', onRun, output 
   const reduced = useReducedMotion()
   const isRunning = state === 'running'
   const isDone = state === 'done'
+
+  // Markdown cells: just render the heading text, no code box, no output box
+  if (type === 'markdown') {
+    return (
+      <div
+        className="flex gap-0"
+        style={{ borderLeft: '3px solid transparent' }}
+      >
+        <CellGutter state={state} index={index} type="markdown" />
+        <div className="flex-1 min-w-0 py-3 pr-4">
+          <div
+            className="font-mono text-[11px] uppercase tracking-widest mb-0.5"
+            style={{ color: 'var(--nb-muted)' }}
+          >
+            # markdown
+          </div>
+          <div
+            className="text-[15px] font-semibold"
+            style={{ color: 'var(--nb-accent)' }}
+          >
+            {code}
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div

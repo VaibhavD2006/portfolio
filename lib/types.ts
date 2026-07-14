@@ -1,5 +1,5 @@
 export type CellState = 'idle' | 'running' | 'done'
-export type CellType = 'code' | 'bash'
+export type CellType = 'code' | 'bash' | 'markdown'
 
 export interface ExperienceEntry {
   org: string

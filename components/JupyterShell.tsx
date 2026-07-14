@@ -48,110 +48,102 @@ const PORTFOLIO_TYPES: Array<'code' | 'bash'> = ['code', 'code', 'code', 'code',
 
 // ─── Learning Journal Notebook ───
 const LEARNING_CELLS = [
-  `# Learning Journal
+  // ── Section 1: Papers ──
+  `Papers & Techniques I'm Exploring`,
 
-# Papers & Techniques I'm Exploring
+  `papers = {
+    "MedSAM3": "Foundation model for medical image segmentation (Meta AI, 2024)",
+    "Image Detection": "Fine-tuning detection models for Oncology + US Defense",
+    "Hybrid RAG": "BM25 sparse + dense embeddings with re-ranking",
+}
+papers`,
 
-papers = [
-    "MedSAM3 for Medical Segmentation",
-    "Fine-tuning Image Detection Models",
-    "Hybrid RAG (BM25 + Dense)"
-]
-papers
+  // ── Section 2: Currently Building ──
+  `Currently Building`,
 
-# Currently Building
-
-## Quant Finance
-quant = [
-    "VIX Prediction Bot - $500 P&L (live)",
-    "Backtesting infrastructure for SEC filings using web scrapers",
-    "Options flow + RSI mean reversion strategies",
-    "Monte Carlo simulations for risk analysis"
-]
-quant
-
-## CaseForge AI - AI-powered consulting case interview prep
-caseforge = {
-    "project": "CaseForge AI",
-    "purpose": "AI-powered consulting case interview prep for NC State consulting clubs",
-    "features": [
-        "AI Interviewer - Adaptive mock interviews mirroring real case styles",
-        "7-Dimension Scorecard - Structure, hypothesis quality, numerics, synthesis, communication",
-        "Readiness Dashboard - Progress tracking toward offer-ready",
-        "Drill Library - 100+ case scenarios across industries",
-        "Goals Tracking - Prep milestones",
-        "Session History & Analytics - Full history with charts and trends"
+  `# Quant Finance
+quant = {
+    "VIX Prediction Bot": "$500 P&L realized (not paper trade)",
+    "Strategies": [
+        "Post Earnings Drift Announcement via SEC filing web scrapers",
+        "Options flow + RSI mean reversion across sectors",
+        "Monte Carlo simulations for risk analysis",
     ],
-    "tech_stack": {
-        "framework": "Next.js 16 (App Router)",
-        "language": "TypeScript / React 19",
-        "styling": "Tailwind CSS v4 + Shadcn UI",
-        "ai": "Google Gemini + Ollama (local)",
-        "db": "PostgreSQL via Drizzle ORM",
-        "auth": "Auth.js v5 (Google OAuth)",
-        "jobs": "Inngest (7-stage evaluation pipeline)",
-        "charts": "Recharts"
-    }
+    "Stack": ["Python", "Backtesting", "Monte Carlo", "RSI", "Options Flow"],
+}
+quant`,
+
+  `# CaseForge AI
+caseforge = {
+    "description": "AI-powered consulting case interview prep SaaS",
+    "target": "NC State consulting clubs — McKinsey, BCG, Bain, T2 firms",
+    "features": [
+        "AI Interviewer — adaptive mock interviews with pressure testing",
+        "7-Dimension Scorecard — structure, hypothesis, numerics, synthesis, comms",
+        "Readiness Dashboard — Bronze → Silver → Gold → Platinum tier progression",
+        "Drill Library — 100+ cases across retail, healthcare, M&A, operations",
+        "Session History & Analytics — charts and dimension trends over time",
+    ],
+    "stack": {
+        "framework": "Next.js 16 + TypeScript + React 19",
+        "styling":   "Tailwind CSS v4 + Shadcn UI + Framer Motion",
+        "ai":        "Google Gemini + Ollama (local inference)",
+        "db":        "PostgreSQL + Drizzle ORM",
+        "auth":      "Auth.js v5 — Google OAuth",
+        "jobs":      "Inngest — 7-stage async eval pipeline",
+    },
 }
 caseforge`,
-
-  `# Challenges & Experiments
-challenges = {
-    "MedSAM": "Prompt engineering for CT vs MRI vs ultrasound - optimal prompts vary by modality",
-    "Detection": "Fine-tuning for oncology/defense domains with limited annotated data",
-    "RAG": "Re-ranking BM25 + dense scores on comparable scales",
-    "Quant": "Integrating real-time options flow with RSI for mean reversion signals",
-    "CaseForge": "Building async evaluation pipeline with Inngest for 7-dimension scoring"
-}
-challenges`,
 ]
 
-const LEARNING_OUTPUTS = [
-  <div className="font-mono text-[12px]" style={{ color: 'var(--nb-text)' }}>
-    <div className="mb-2">In [1]:</div>
-    <div className="ml-2">
-      <div className="mb-1"><span className="text-[var(--nb-green)]">["MedSAM3 for Medical Segmentation",</span> <span className="text-[var(--nb-purple)]">"Fine-tuning Image Detection Models",</span> <span className="text-[var(--nb-accent)]">"Hybrid RAG (BM25 + Dense)"]</span></div>
+const LEARNING_OUTPUTS: React.ReactNode[] = [
+  // markdown header — no output
+  null,
+
+  // papers output
+  <div key="papers-out" className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-text)' }}>
+    <div className="space-y-1">
+      <div><span className="text-[var(--nb-green)]">"MedSAM3"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"Foundation model for medical image segmentation (Meta AI, 2024)"</span></div>
+      <div><span className="text-[var(--nb-green)]">"Image Detection"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"Fine-tuning detection models for Oncology + US Defense"</span></div>
+      <div><span className="text-[var(--nb-green)]">"Hybrid RAG"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"BM25 sparse + dense embeddings with re-ranking"</span></div>
     </div>
   </div>,
-  <div className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-text)' }}>
-    <div>In [2]:</div>
-    <div className="ml-2 space-y-1">
-      <div>• MedSAM3 for Medical Segmentation - foundation model for medical images</div>
-      <div>• Fine-tuning Image Detection Models - Oncology + US Defense applications</div>
-      <div>• Hybrid RAG (BM25 + Dense) - combining sparse and dense retrieval</div>
-    </div>
+
+  // markdown header — no output
+  null,
+
+  // quant output
+  <div key="quant-out" className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-text)' }}>
+    <div><span className="text-[var(--nb-green)]">"VIX Prediction Bot"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"$500 P&L realized (not paper trade)"</span></div>
+    <div className="mt-2"><span className="text-[var(--nb-green)]">"Strategies"</span><span className="text-[var(--nb-muted)]">: [</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Post Earnings Drift Announcement via SEC filing web scrapers"</span><span className="text-[var(--nb-muted)]">,</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Options flow + RSI mean reversion across sectors"</span><span className="text-[var(--nb-muted)]">,</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Monte Carlo simulations for risk analysis"</span><span className="text-[var(--nb-muted)]">,</span></div>
+    <div><span className="text-[var(--nb-muted)]">]</span></div>
+    <div className="mt-2"><span className="text-[var(--nb-green)]">"Stack"</span><span className="text-[var(--nb-muted)]">: [</span><span className="text-[var(--nb-yellow)]">"Python", "Backtesting", "Monte Carlo", "RSI", "Options Flow"</span><span className="text-[var(--nb-muted)]">]</span></div>
   </div>,
-  <div className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-text)' }}>
-    <div>In [3]:</div>
-    <div className="ml-2 space-y-1">
-      <div className="mb-2">=== Currently Building ===</div>
-      <div className="mb-2">--- Quant Finance ---</div>
-      <div>• VIX Prediction Bot - $500 P&L (live)</div>
-      <div>• Backtesting infrastructure for SEC filings using web scrapers</div>
-      <div>• Options flow + RSI mean reversion strategies</div>
-      <div>• Monte Carlo simulations for risk analysis</div>
-      <div className="mt-2 mb-2">--- CaseForge AI ---</div>
-      <div>• AI-powered consulting case interview prep</div>
-      <div>• 7-Dimension Scorecard (Structure, Hypothesis, Numerics, Synthesis, Communication)</div>
-      <div>• Readiness Dashboard with Bronze → Platinum tier progression</div>
-      <div>• 100+ case scenarios across industries</div>
-      <div className="mt-2">Tech: Next.js 16, TypeScript, Tailwind, Gemini + Ollama, PostgreSQL, Inngest</div>
-    </div>
+
+  // caseforge output
+  <div key="caseforge-out" className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-text)' }}>
+    <div><span className="text-[var(--nb-green)]">"description"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"AI-powered consulting case interview prep SaaS"</span></div>
+    <div><span className="text-[var(--nb-green)]">"target"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"NC State consulting clubs — McKinsey, BCG, Bain, T2 firms"</span></div>
+    <div className="mt-2"><span className="text-[var(--nb-green)]">"features"</span><span className="text-[var(--nb-muted)]">: [</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-yellow)]">"AI Interviewer — adaptive mock interviews with pressure testing"</span><span className="text-[var(--nb-muted)]">,</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-yellow)]">"7-Dimension Scorecard — structure, hypothesis, numerics, synthesis, comms"</span><span className="text-[var(--nb-muted)]">,</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Readiness Dashboard — Bronze → Silver → Gold → Platinum tier"</span><span className="text-[var(--nb-muted)]">,</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Drill Library — 100+ cases across retail, healthcare, M&A, ops"</span><span className="text-[var(--nb-muted)]">,</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-yellow)]">"Session History & Analytics — charts and dimension trends"</span><span className="text-[var(--nb-muted)]">,</span></div>
+    <div><span className="text-[var(--nb-muted)]">]</span></div>
+    <div className="mt-2"><span className="text-[var(--nb-green)]">"stack"</span><span className="text-[var(--nb-muted)]">: {"{"}</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-green)]">"framework"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"Next.js 16 + TypeScript + React 19"</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-green)]">"ai"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"Google Gemini + Ollama (local inference)"</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-green)]">"db"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"PostgreSQL + Drizzle ORM"</span></div>
+    <div className="ml-4"><span className="text-[var(--nb-green)]">"jobs"</span><span className="text-[var(--nb-muted)]">: </span><span className="text-[var(--nb-yellow)]">"Inngest — 7-stage async eval pipeline"</span></div>
+    <div><span className="text-[var(--nb-muted)]">{"}"}</span></div>
   </div>,
-  <div className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-green)' }}>
-    <div>In [5]:</div>
-    <div className="ml-2 space-y-1">
-      <div>• MedSAM: Prompt engineering for CT vs MRI vs ultrasound</div>
-      <div>• Detection: Fine-tuning for oncology/defense domains</div>
-      <div>• RAG: Re-ranking BM25 + dense scores on comparable scales</div>
-      <div>• Quant: Integrating options flow with RSI for mean reversion</div>
-      <div>• CaseForge: Building async 7-stage Inngest evaluation pipeline</div>
-    </div>
-  </div>,
-  <LearningOutput key="learning" />,
 ]
 
-const LEARNING_TYPES: Array<'code' | 'bash'> = ['code', 'code', 'code', 'code']
+const LEARNING_TYPES: Array<'code' | 'bash' | 'markdown'> = ['markdown', 'code', 'markdown', 'code', 'code']
 
 // ─── Config ───
 const EXECUTION_DELAY = 400
@@ -255,18 +247,25 @@ export function JupyterShell() {
 
           {/* Cells */}
           <div className="pb-20 sm:pb-16">
-            {states.length > 0 && currentCells.map((code, i) => (
-              <div key={i} className="border-b" style={{ borderColor: 'var(--nb-border-subtle)' }}>
-                <NotebookCell
-                  index={i + 1}
-                  state={states[i]}
-                  code={code}
-                  type={currentTypes[i]}
-                  onRun={() => runCell(i)}
-                  output={currentOutputs[i]}
-                />
-              </div>
-            ))}
+            {states.length > 0 && (() => {
+              let codeIndex = 0
+              return currentCells.map((code, i) => {
+                const type = currentTypes[i]
+                if (type !== 'markdown') codeIndex++
+                return (
+                  <div key={i} className="border-b" style={{ borderColor: 'var(--nb-border-subtle)' }}>
+                    <NotebookCell
+                      index={codeIndex}
+                      state={states[i]}
+                      code={code}
+                      type={type}
+                      onRun={() => runCell(i)}
+                      output={currentOutputs[i]}
+                    />
+                  </div>
+                )
+              })
+            })()}
 
             {/* Cell count hint */}
             <div className="px-3 sm:px-6 pt-4 text-[11px] text-[var(--nb-muted)] select-none">
