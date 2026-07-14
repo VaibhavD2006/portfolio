@@ -52,39 +52,63 @@ const LEARNING_CELLS = [
 
 # Papers & Techniques I'm Exploring
 
-papers = ["MedSAM3 for Medical Segmentation", "Hybrid RAG (BM25 + Dense)", "Edge ML Quantization"]
+papers = ["MedSAM3 for Medical Segmentation", "Fine-tuning Image Detection Models", "Hybrid RAG (BM25 + Dense)"]
 papers`,
 
   `%%bash
-echo "=== Current Reading ==="
+echo "=== Current Projects ==="
 echo "1. MedSAM3 Paper (Meta AI, 2024)"
-echo "2. Hybrid RAG Survey (2024)"
-echo "3. Edge ML Quantization Guide (DoD)"`,
+echo "2. Fine-tuning Image Detection (Oncology + US Defense)"
+echo "3. Hybrid RAG Survey (2024)"`,
 
   `# Challenges & Experiments
-challenges = {"MedSAM": "Prompt engineering for CT vs MRI", "RAG": "Re-ranking BM25 + dense scores", "Edge": "INT8 quantization on ARM Cortex-A53"}
+challenges = {"MedSAM": "Prompt engineering for CT vs MRI", "Detection": "Fine-tuning for oncology/defense domains", "RAG": "Re-ranking BM25 + dense scores"}
 challenges`,
+
+  `# Quant Finance Projects
+quant = ["VIX Prediction Bot", "Backtesting Systems", "Monte Carlo Simulations"]
+quant`,
+
+  `%%bash
+echo "=== Quant Finance ==="
+echo "1. VIX Prediction Bot - $500 P&L (live)"
+echo "2. Backtesting infrastructure for SEC filings"
+echo "3. Options flow + RSI mean reversion strategies"`,
 ]
 
 const LEARNING_OUTPUTS = [
   <div className="font-mono text-[12px]" style={{ color: 'var(--nb-text)' }}>
     <div className="mb-2">In [1]:</div>
     <div className="ml-2">
-      <div className="mb-1"><span className="text-[var(--nb-green)]">["MedSAM3 for Medical Segmentation",</span> <span className="text-[var(--nb-purple)]">"Hybrid RAG (BM25 + Dense)",</span> <span className="text-[var(--nb-accent)]">"Edge ML Quantization Guide (DoD)"]</span></div>
+      <div className="mb-1"><span className="text-[var(--nb-green)]">["MedSAM3 for Medical Segmentation",</span> <span className="text-[var(--nb-purple)]">"Fine-tuning Image Detection Models",</span> <span className="text-[var(--nb-accent)]">"Hybrid RAG (BM25 + Dense)"]</span></div>
     </div>
   </div>,
   <div className="font-mono text-[12px] space-y-0.5" style={{ color: 'var(--nb-green)' }}>
     <div>In [2]:</div>
     <div className="ml-2 space-y-0.5">
       <div>1. MedSAM3 Paper (Meta AI, 2024)</div>
-      <div>2. Hybrid RAG Survey (2024)</div>
-      <div>3. Edge ML Quantization Guide (DoD)</div>
+      <div>2. Fine-tuning Image Detection (Oncology + US Defense)</div>
+      <div>3. Hybrid RAG Survey (2024)</div>
     </div>
   </div>,
   <LearningOutput key="learning" />,
+  <div className="font-mono text-[12px]" style={{ color: 'var(--nb-text)' }}>
+    <div className="mb-2">In [4]:</div>
+    <div className="ml-2">
+      <div className="mb-1"><span className="text-[var(--nb-green)]">["VIX Prediction Bot",</span> <span className="text-[var(--nb-purple)]">"Backtesting Systems",</span> <span className="text-[var(--nb-accent)]">"Monte Carlo Simulations"]</span></div>
+    </div>
+  </div>,
+  <div className="font-mono text-[12px] space-y-0.5" style={{ color: 'var(--nb-green)' }}>
+    <div>In [5]:</div>
+    <div className="ml-2 space-y-0.5">
+      <div>1. VIX Prediction Bot - $500 P&L (live)</div>
+      <div>2. Backtesting infrastructure for SEC filings</div>
+      <div>3. Options flow + RSI mean reversion strategies</div>
+    </div>
+  </div>,
 ]
 
-const LEARNING_TYPES: Array<'code' | 'bash'> = ['code', 'bash', 'code']
+const LEARNING_TYPES: Array<'code' | 'bash'> = ['code', 'bash', 'code', 'code', 'bash']
 
 // ─── Config ───
 const EXECUTION_DELAY = 400

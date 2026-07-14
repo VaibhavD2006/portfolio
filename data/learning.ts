@@ -16,6 +16,20 @@ export const learningItems: ProjectEntry[] = [
     hardPart: 'Understanding how prompt positioning affects segmentation quality in CT vs MRI vs ultrasound - the model is promptable but the optimal prompts vary by modality.',
   },
   {
+    title: 'Fine-tuning Image Detection Models',
+    org: 'Oncology & US Defense',
+    category: ['Computer Vision', 'Segmentation'],
+    status: 'Ongoing',
+    summary:
+      'Currently fine-tuning current image detection models for oncology and US defense applications. Working on creating segmentation and fine grain image detection models for detecting anomalies and anomalies in medical imaging and defense sector imagery.',
+    stack: ['PyTorch', 'YOLOv8', 'SAM (Segment Anything)', 'Medical Imaging', 'Defense Imagery'],
+    metrics: [
+      { label: 'Applications', value: 'Oncology, US Defense' },
+      { label: 'Model Type', value: 'Detection + Segmentation' },
+    ],
+    hardPart: 'Balancing accuracy between medical imaging (CT/MRI) and defense sector imagery (satellite, aerial, surveillance) which have vastly different data characteristics and annotation requirements.',
+  },
+  {
     title: 'Hybrid RAG (BM25 + Dense)',
     org: 'Research Notes',
     category: ['RAG', 'LLM'],
@@ -30,18 +44,18 @@ export const learningItems: ProjectEntry[] = [
     hardPart: 'Designing the re-ranking function so BM25 scores and dense similarity scores are on comparable scales without biasing one over the other.',
   },
   {
-    title: 'Edge ML Quantization',
-    org: 'DoD Deployment',
-    category: ['Edge', 'Optimization'],
-    status: 'Shipped',
+    title: 'Quant Finance: VIX Prediction Bot',
+    org: 'Personal Projects',
+    category: ['Quant Finance', 'ML'],
+    status: 'Ongoing',
     summary:
-      'Investigating post-training quantization for ARM Cortex-A53 edge devices. 8-bit quantization gives 4x speedup with <2% accuracy drop. Dynamic quantization works better than static for our CNN architecture.',
-    stack: ['TensorRT', 'INT8 Quantization', 'ARM CPU', 'ONNX'],
+      'Building automated backtesting and Monte Carlo simulation systems. Currently working on a prediction bot that forecasts VIX and uses mean reversion strategies for trading. Recent success: $500 profit realized (not paper trade).',
+    stack: ['Python', 'Backtesting', 'Monte Carlo', 'RSI', 'Options Flow', 'Web Scrapers', 'SEC Filings'],
     metrics: [
-      { label: 'Speedup', value: '4.2x' },
-      { label: 'Accuracy Drop', value: '<2%' },
+      { label: 'P&L', value: '$500 realized' },
+      { label: 'Strategy', value: 'Mean reversion on VIX' },
     ],
-    hardPart: "Ensuring quantization-aware training doesn't overfit to synthetic data - real-world deployment revealed edge cases synthetic data missed.",
+    hardPart: 'Integrating real-time options flow data with RSI indicators to calculate mean reversion signals across various sectors while maintaining robust backtesting infrastructure.',
   },
 ]
 
