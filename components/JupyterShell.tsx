@@ -52,63 +52,64 @@ const LEARNING_CELLS = [
 
 # Papers & Techniques I'm Exploring
 
-papers = ["MedSAM3 for Medical Segmentation", "Fine-tuning Image Detection Models", "Hybrid RAG (BM25 + Dense)"]
-papers`,
+papers = [
+    "MedSAM3 for Medical Segmentation",
+    "Fine-tuning Image Detection Models",
+    "Hybrid RAG (BM25 + Dense)",
+    "VIX Prediction Bot",
+    "Backtesting Systems"
+]
+papers
 
-  `%%bash
-echo "=== Current Projects ==="
-echo "1. MedSAM3 Paper (Meta AI, 2024)"
-echo "2. Fine-tuning Image Detection (Oncology + US Defense)"
-echo "3. Hybrid RAG Survey (2024)"`,
+# Quant Finance Projects
+quant = [
+    "VIX Prediction Bot - $500 P&L (live)",
+    "Backtesting infrastructure for SEC filings using web scrapers",
+    "Options flow + RSI mean reversion strategies",
+    "Monte Carlo simulations for risk analysis"
+]
+quant
 
-  `# Challenges & Experiments
-challenges = {"MedSAM": "Prompt engineering for CT vs MRI", "Detection": "Fine-tuning for oncology/defense domains", "RAG": "Re-ranking BM25 + dense scores"}
+# Challenges & Experiments
+challenges = {
+    "MedSAM": "Prompt engineering for CT vs MRI vs ultrasound - optimal prompts vary by modality",
+    "Detection": "Fine-tuning for oncology/defense domains with limited annotated data",
+    "RAG": "Re-ranking BM25 + dense scores on comparable scales",
+    "Quant": "Integrating real-time options flow with RSI for mean reversion signals"
+}
 challenges`,
-
-  `# Quant Finance Projects
-quant = ["VIX Prediction Bot", "Backtesting Systems", "Monte Carlo Simulations"]
-quant`,
-
-  `%%bash
-echo "=== Quant Finance ==="
-echo "1. VIX Prediction Bot - $500 P&L (live)"
-echo "2. Backtesting infrastructure for SEC filings"
-echo "3. Options flow + RSI mean reversion strategies"`,
 ]
 
 const LEARNING_OUTPUTS = [
   <div className="font-mono text-[12px]" style={{ color: 'var(--nb-text)' }}>
     <div className="mb-2">In [1]:</div>
     <div className="ml-2">
-      <div className="mb-1"><span className="text-[var(--nb-green)]">["MedSAM3 for Medical Segmentation",</span> <span className="text-[var(--nb-purple)]">"Fine-tuning Image Detection Models",</span> <span className="text-[var(--nb-accent)]">"Hybrid RAG (BM25 + Dense)"]</span></div>
+      <div className="mb-1"><span className="text-[var(--nb-green)]">["MedSAM3 for Medical Segmentation",</span> <span className="text-[var(--nb-purple)]">"Fine-tuning Image Detection Models",</span> <span className="text-[var(--nb-accent)]">"Hybrid RAG (BM25 + Dense)",</span> <span className="text-[var(--nb-cyan)]">"VIX Prediction Bot",</span> <span className="text-[var(--nb-pink)]">"Backtesting Systems"]</span></div>
     </div>
   </div>,
-  <div className="font-mono text-[12px] space-y-0.5" style={{ color: 'var(--nb-green)' }}>
+  <div className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-text)' }}>
     <div>In [2]:</div>
-    <div className="ml-2 space-y-0.5">
-      <div>1. MedSAM3 Paper (Meta AI, 2024)</div>
-      <div>2. Fine-tuning Image Detection (Oncology + US Defense)</div>
-      <div>3. Hybrid RAG Survey (2024)</div>
+    <div className="ml-2 space-y-1">
+      <div>• MedSAM3 for Medical Segmentation - foundation model for medical images</div>
+      <div>• Fine-tuning Image Detection Models - Oncology + US Defense applications</div>
+      <div>• Hybrid RAG (BM25 + Dense) - combining sparse and dense retrieval</div>
+      <div>• VIX Prediction Bot - $500 P&L from live trading</div>
+      <div>• Backtesting Systems - automated strategies for SEC filings</div>
+    </div>
+  </div>,
+  <div className="font-mono text-[12px] space-y-1" style={{ color: 'var(--nb-green)' }}>
+    <div>In [3]:</div>
+    <div className="ml-2 space-y-1">
+      <div>• VIX Prediction Bot - $500 P&L (live)"</div>
+      <div>• Backtesting infrastructure for SEC filings using web scrapers</div>
+      <div>• Options flow + RSI mean reversion strategies</div>
+      <div>• Monte Carlo simulations for risk analysis</div>
     </div>
   </div>,
   <LearningOutput key="learning" />,
-  <div className="font-mono text-[12px]" style={{ color: 'var(--nb-text)' }}>
-    <div className="mb-2">In [4]:</div>
-    <div className="ml-2">
-      <div className="mb-1"><span className="text-[var(--nb-green)]">["VIX Prediction Bot",</span> <span className="text-[var(--nb-purple)]">"Backtesting Systems",</span> <span className="text-[var(--nb-accent)]">"Monte Carlo Simulations"]</span></div>
-    </div>
-  </div>,
-  <div className="font-mono text-[12px] space-y-0.5" style={{ color: 'var(--nb-green)' }}>
-    <div>In [5]:</div>
-    <div className="ml-2 space-y-0.5">
-      <div>1. VIX Prediction Bot - $500 P&L (live)</div>
-      <div>2. Backtesting infrastructure for SEC filings</div>
-      <div>3. Options flow + RSI mean reversion strategies</div>
-    </div>
-  </div>,
 ]
 
-const LEARNING_TYPES: Array<'code' | 'bash'> = ['code', 'bash', 'code', 'code', 'bash']
+const LEARNING_TYPES: Array<'code' | 'bash'> = ['code', 'code', 'code']
 
 // ─── Config ───
 const EXECUTION_DELAY = 400
