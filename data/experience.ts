@@ -22,7 +22,7 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    org: 'U.S. Department of Defense',
+    org: 'DARPA',
     role: 'ML Engineer Intern',
     dates: 'Apr 2025 – Jul 2025',
     location: 'Remote',
